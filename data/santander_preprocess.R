@@ -3,13 +3,10 @@
 # Affiliation:  Department of Mathematics, Imperial College London
 # Email:        f.sannapassino@imperial.ac.uk
 
-path = "/Users/carlosperello/Desktop/M2R-Project/data/santander_summaries/"
-locations_path = "/Users/carlosperello/Desktop/M2R-Project/data/santander_locations.csv"
-
 ## Empty list object
 weekly_data = list()
 ## List all the .csv file names (and sort them in case they are not ordered by number)
-file_names = sort(list.files(path, pattern='.csv'))
+file_names = sort(list.files('~/Documents/github/bikes_library/data/santander_summaries/', pattern='.csv'))
 ## file_names = file_names[which(grepl('256',file_names)):which(grepl('261',file_names))]
 file_names = file_names[which(grepl('221', file_names)):which(grepl('236', file_names))]
 start_day = as.Date(strsplit(strsplit(file_names[1], '_')[[1]][2], '-')[[1]][1], '%d%b%Y')
@@ -19,7 +16,7 @@ n_weeks = length(file_names)
 ## Import
 weekly_data = list()
 for(week in 1:n_weeks){
-  weekly_data[[week]] = read.table(paste(path,
+  weekly_data[[week]] = read.table(paste('~/Documents/github/bikes_library/data/santander_summaries/',
                                          file_names[week],sep=''), sep=',', header=FALSE, 
                                    col.names=c('start_id','end_id','start_time','duration'))
 }
@@ -28,7 +25,7 @@ df = dplyr::bind_rows(weekly_data)
 df = transform(df, end_time = start_time + duration)
 
 ## Import stations
-stations = read.table(locations_path, sep=',', header=TRUE)
+stations = read.table('~/Documents/github/bikes_library/data/santander_locations.csv', sep=',', header=TRUE)
 
 ## Calculate geodesic distance
 library(geodist)
