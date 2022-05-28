@@ -44,3 +44,4 @@ for(i in 1:length(xx)){
 ## Distances
 vv = apply(df, MARGIN=1, FUN=function(x) distances[xx[x[1]], xx[x[2]]])
 df = transform(df, dist=vv)
+write.csv(df,"/Users/carlosperello/Desktop/M2R-Project/data/processed_df.csv")
