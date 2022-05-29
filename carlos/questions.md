@@ -1,5 +1,11 @@
 # My Questions
 
+## Important
+
+Define "continuous" time models as models that do something at every time setp, whilst "discrete" time models as models that do something at every jump.
+
+- Are our models in "discrete" time or "continuous" time? i.e. are the $t_is$ the $i$th time step, or the $i$th jump? I think they are on discrete time. But then how to fix the poisson model so it is on discrete time?
+
 ## Laub
 
 ### Page 3
@@ -21,6 +27,16 @@
 
 ### Page 13
 - Stochastic volatilities? Heston model?
+
+## Rizoiu
+
+### Page 3
+- Eq. (1.2); what is this? Not Poisson, what is the intuition?
+  
+## Pawitan
+
+### Page 321
+- After thm 11.1, the way the $t_ns$ are arranged is determined by $\lambda(t)$; why?
 
 
 
