@@ -1,5 +1,11 @@
 # My Questions
 
+## Important
+
+Define "continuous" time models as models that do something at every time setp, whilst "discrete" time models as models that do something at every jump.
+
+- Are our models in "discrete" time or "continuous" time? i.e. are the $t_is$ the $i$th time step, or the $i$th jump?
+
 ## Laub
 
 ### Page 3
