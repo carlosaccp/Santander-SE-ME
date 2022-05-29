@@ -22,5 +22,15 @@
 ### Page 13
 - Stochastic volatilities? Heston model?
 
+## Rizoiu
+
+### Page 3
+- Eq. (1.2); what is this? Not Poisson, what is the intuition?
+  
+## Pawitan
+
+### Page 321
+- After thm 11.1, the way the $t_ns$ are arranged is determined by $\lambda(t)$; why?
+
 
 
