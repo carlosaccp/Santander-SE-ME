@@ -4,7 +4,7 @@
 
 Define "continuous" time models as models that do something at every time setp, whilst "discrete" time models as models that do something at every jump.
 
-- Are our models in "discrete" time or "continuous" time? i.e. are the $t_is$ the $i$th time step, or the $i$th jump?
+- Are our models in "discrete" time or "continuous" time? i.e. are the $t_is$ the $i$th time step, or the $i$th jump? I think they are on discrete time. But then how to fix the poisson model so it is on discrete time?
 
 ## Laub
 
