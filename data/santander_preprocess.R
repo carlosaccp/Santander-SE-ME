@@ -5,8 +5,10 @@
 
 
 setwd(getwd())
-path = "data/santander_summaries/"
-locations_path = "data/santander_locations.csv"
+# path = "data/santander_summaries/"
+# locations_path = "data/santander_locations.csv"
+path = "C:\\Users\\dell\\Desktop\\M2R-Project\\data\\santander_summaries\\"
+locations_path = "C:\\Users\\dell\\Desktop\\M2R-Project\\data\\santander_locations.csv"
 
 ## Empty list object
 weekly_data = list()
@@ -46,4 +48,4 @@ for(i in 1:length(xx)){
 ## Distances
 vv = apply(df, MARGIN=1, FUN=function(x) distances[xx[x[1]], xx[x[2]]])
 df = transform(df, dist=vv)
-write.csv(df,"/Users/carlosperello/Desktop/M2R-Project/data/processed_df.csv")
+write.csv(df,"C:\\Users\\dell\\Desktop\\M2R-Project\\data\\processed_df.csv")
