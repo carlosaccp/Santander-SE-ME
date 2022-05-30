@@ -3,8 +3,10 @@
 # Affiliation:  Department of Mathematics, Imperial College London
 # Email:        f.sannapassino@imperial.ac.uk
 
-path = "/Users/carlosperello/Desktop/M2R-Project/data/santander_summaries/"
-locations_path = "/Users/carlosperello/Desktop/M2R-Project/data/santander_locations.csv"
+
+setwd(getwd())
+path = "data/santander_summaries/"
+locations_path = "data/santander_locations.csv"
 
 ## Empty list object
 weekly_data = list()
