@@ -31,7 +31,7 @@ Define "continuous" time models as models that do something at every time setp, 
 ## Rizoiu
 
 ### Page 3
-- Eq. (1.2); what is this? Not Poisson, what is the intuition?
+- **Eq. (1.2)**; what is this? Not Poisson, what is the intuition?
   
 ## Pawitan
 
