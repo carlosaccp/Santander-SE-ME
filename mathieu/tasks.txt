@@ -1,0 +1,10 @@
+TODO:
+
+- Derive maximisation of mutually exciting Hawkes processes
+- Write up Latex
+
+
+Things done so far:
+
+- Coded normalisation of data using random pertubations
+- 
