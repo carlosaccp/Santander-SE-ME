@@ -45,3 +45,4 @@ for station in train_sorted_stations:
     rate = n_events / time_elapsed
 
     rates_dict[station.start_id.unique()[0]] = rate
+station_array = list(rates_dict.keys())
