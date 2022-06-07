@@ -22,4 +22,7 @@
 - [X] Adapt preprocessing (28 May)
 - [X] Fit Poisson Process (29 May)
 - [ ] Start working on Hawkes Process
+- [ ] ECDF plolt
+- [ ] Tidy up figures
+- [ ] 
 
