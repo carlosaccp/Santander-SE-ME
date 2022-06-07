@@ -32,17 +32,32 @@ bike_data = bike_data.sort_values(by=["start_time"])
 
 train_time = 12*7*24*60
 train_bike_data = bike_data[bike_data.start_time <= train_time]
+test_bike_data = bike_data[bike_data.start_time > train_time]
 train_sorted_stations = []
 for st_id in train_bike_data.start_id.sort_values().unique():
     train_sorted_stations.append(
         train_bike_data[train_bike_data.start_id == st_id]
         )
+test_sorted_stations = []
+for st_id in test_bike_data.start_id.sort_values().unique():
+    test_sorted_stations.append(
+        test_bike_data[test_bike_data.start_id == st_id]
+        )
 rates_dict = {}
-for station in train_sorted_stations:
+for station in test_sorted_stations:
     time_elapsed = station.start_time.to_numpy()[-1] \
         - station.start_time.to_numpy()[0]
-    n_events = train_sorted_stations[0].size
+    n_events = test_sorted_stations[0].size
     rate = n_events / time_elapsed
 
     rates_dict[station.start_id.unique()[0]] = rate
 station_array = list(rates_dict.keys())
+
+
+def ecdf(data):
+    # https://cmdlinetips.com/2019/05/empirical-cumulative-distribution-function-ecdf-in-python/
+    """ Compute ECDF """
+    x = np.sort(data)
+    n = x.size
+    y = np.arange(1, n+1) / n
+    return(x, y)
