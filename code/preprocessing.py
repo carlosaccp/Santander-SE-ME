@@ -33,9 +33,9 @@ bike_data = bike_data.sort_values(by=["start_time"])
 train_time = 12*7*24*60
 train_bike_data = bike_data[bike_data.start_time <= train_time]
 test_bike_data = bike_data[bike_data.start_time > train_time]
-train_sorted_stations = []
+train_sorted_stations_start = []
 for st_id in train_bike_data.start_id.sort_values().unique():
-    train_sorted_stations.append(
+    train_sorted_stations_start.append(
         train_bike_data[train_bike_data.start_id == st_id]
         )
 test_sorted_stations = []
@@ -61,3 +61,21 @@ def ecdf(data):
     n = x.size
     y = np.arange(1, n+1) / n
     return(x, y)
+
+
+end_times_per_station_sorted = {}
+for id in bike_data.end_id.unique():
+    unsorted_station_end_time = bike_data[bike_data.end_id == id]
+    sorted_station_end_time = unsorted_station_end_time.sort_values(
+        by=["end_time"])
+    end_times_per_station_sorted[id] = sorted_station_end_time.\
+        end_time.to_numpy()
+end_times_per_station_sorted
+
+start_times_per_station_sorted = {}
+for id in bike_data.start_id.unique():
+    unsorted_station_start_time = bike_data[bike_data.start_id == id]
+    sorted_station_start_time = unsorted_station_start_time.sort_values(
+        by=["start_time"])
+    start_times_per_station_sorted[id] = sorted_station_start_time.\
+        start_time.to_numpy()
