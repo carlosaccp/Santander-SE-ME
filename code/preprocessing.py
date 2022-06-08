@@ -4,6 +4,10 @@ import numpy as np
 station_data = pd.read_csv("../data/santander_locations.csv")
 
 
+class OptimizationError(RuntimeError):
+    """Called when optimizer does not converge."""
+    pass
+
 class StationIdError(IndexError):
     """Called when we try and read a non-existing station id."""
     pass

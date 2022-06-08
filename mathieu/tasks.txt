@@ -1,0 +1,11 @@
+TODO:
+
+- Derive maximisation of mutually exciting Hawkes processes
+- Code goodness of fit for self-exciting processes
+
+
+Things done so far:
+
+- Coded normalisation of data using random pertubations
+- Wrote up introduction draft
+- Wrote up sections 3, 4, 5 draft in report
