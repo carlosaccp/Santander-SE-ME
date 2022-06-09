@@ -81,7 +81,6 @@ for id in bike_data.end_id.unique():
         by=["end_time"])
     end_times_per_station_sorted[id] = sorted_station_end_time.\
         end_time.to_numpy()
-end_times_per_station_sorted
 
 start_times_per_station_sorted = {}
 for id in bike_data.start_id.unique():
@@ -91,7 +90,25 @@ for id in bike_data.start_id.unique():
     start_times_per_station_sorted[id] = sorted_station_start_time.\
         start_time.to_numpy()
 
+test_end_times_per_station_sorted = {}
+for id in bike_data.end_id.unique():
+    test_unsorted_station_end_time = test_bike_data[test_bike_data.end_id == id]
+    test_sorted_station_end_time = test_unsorted_station_end_time.sort_values(
+        by=["end_time"])
+    test_end_times_per_station_sorted[id] = test_sorted_station_end_time.\
+        end_time.to_numpy()
+
+test_start_times_per_station_sorted = {}
+for id in bike_data.start_id.unique():
+    test_unsorted_station_start_time = test_bike_data[test_bike_data.start_id == id]
+    test_sorted_station_start_time = test_unsorted_station_start_time.sort_values(
+        by=["start_time"])
+    test_start_times_per_station_sorted[id] = test_sorted_station_start_time.\
+        start_time.to_numpy()
+
 t_per_station = start_times_per_station_sorted
 t_prime_per_station = end_times_per_station_sorted
+test_t_per_station = test_start_times_per_station_sorted
+test_t_prime_per_station = test_end_times_per_station_sorted
 train_sorted_start_ids = np.sort(train_bike_data.start_id.unique())
 test_sorted_start_ids = np.array(list(set(train_bike_data.start_id.unique()).intersection(set(test_bike_data.start_id.unique()))))
