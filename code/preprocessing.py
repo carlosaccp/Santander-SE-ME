@@ -25,7 +25,7 @@ nweeks = 12
 bike_data = pd.read_csv("../data/processed_df.csv", index_col=0)
 x = bike_data.min()["start_time"]
 t_min = (x // 86400) * 86400
-end_T = t_min + 16*7*24*3600
+end_T = 12*7*24*60
 train_time = nweeks*7*24*60
 bike_data["start_time"] = (bike_data["start_time"] - t_min) / 60
 bike_data["end_time"] = (bike_data["end_time"] - t_min) / 60
