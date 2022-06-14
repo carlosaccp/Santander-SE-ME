@@ -25,7 +25,7 @@ nweeks = 12
 bike_data = pd.read_csv("../data/processed_df.csv", index_col=0)
 x = bike_data.min()["start_time"]
 t_min = (x // 86400) * 86400
-end_T = 12*7*24*60
+end_T = nweeks*7*24*60
 train_time = nweeks*7*24*60
 bike_data["start_time"] = (bike_data["start_time"] - t_min) / 60
 bike_data["end_time"] = (bike_data["end_time"] - t_min) / 60
@@ -47,22 +47,12 @@ for st_id in test_bike_data.start_id.sort_values().unique():
     test_sorted_stations.append(
         test_bike_data[test_bike_data.start_id == st_id]
         )
-rates_dict = {}
-for station in test_sorted_stations:
-    time_elapsed = station.start_time.to_numpy()[-1] \
-        - station.start_time.to_numpy()[0]
-    n_events = test_sorted_stations[0].size
-    rate = n_events / time_elapsed
-
-    rates_dict[station.start_id.unique()[0]] = rate
 rates_dict_train = {}
 for station in train_sorted_stations_start:
-    time_elapsed = station.start_time.to_numpy()[-1] \
-        - station.start_time.to_numpy()[0]
-    n_events = train_sorted_stations_start[0].size
+    time_elapsed = station.start_time.to_numpy()[-1]
+    n_events = station.size
     rate = n_events / time_elapsed
     rates_dict_train[station.start_id.unique()[0]] = rate
-station_array = list(rates_dict.keys())
 
 
 def ecdf(data):
@@ -75,12 +65,15 @@ def ecdf(data):
 
 
 end_times_per_station_sorted = {}
+durations_per_end_time = {}
 for id in train_bike_data.end_id.unique():
     unsorted_station_end_time = train_bike_data[train_bike_data.end_id == id]
     sorted_station_end_time = unsorted_station_end_time.sort_values(
         by=["end_time"])
     end_times_per_station_sorted[id] = sorted_station_end_time.\
         end_time.to_numpy()
+    durations_per_end_time[id] = sorted_station_end_time.\
+        duration.to_numpy()
 
 start_times_per_station_sorted = {}
 for id in train_bike_data.start_id.unique():
@@ -112,3 +105,5 @@ test_t_per_station = test_start_times_per_station_sorted
 test_t_prime_per_station = test_end_times_per_station_sorted
 train_sorted_start_ids = np.sort(train_bike_data.start_id.unique())
 test_sorted_start_ids = np.array(list(set(train_bike_data.start_id.unique()).intersection(set(test_bike_data.start_id.unique()))))
+train_sorted_end_ids = np.sort(train_bike_data.end_id.unique())
+test_sorted_end_ids = np.array(list(set(train_bike_data.end_id.unique()).intersection(set(test_bike_data.end_id.unique()))))
