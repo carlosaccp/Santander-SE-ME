@@ -74,14 +74,13 @@ for id in train_bike_data.end_id.unique():
         end_time.to_numpy()
     durations_per_end_time[id] = sorted_station_end_time.\
         duration.to_numpy()
+
 test_durations_per_end_time = {}
 for id in test_bike_data.end_id.unique():
     unsorted_station_end_time = test_bike_data[test_bike_data.end_id == id]
     sorted_station_end_time = unsorted_station_end_time.sort_values(
         by=["end_time"])
-    end_times_per_station_sorted[id] = sorted_station_end_time.\
-        end_time.to_numpy()
-    durations_per_end_time[id] = sorted_station_end_time.\
+    test_durations_per_end_time[id] = sorted_station_end_time.\
         duration.to_numpy()
 
 start_times_per_station_sorted = {}
